@@ -1,33 +1,35 @@
-﻿// See https://aka.ms/new-console-template for more information
-string firstNumber = "10";
-string secondNumber = "2";
-
-
-MathStuff mathStuff = new MathStuff(15, 32);
-
-Console.WriteLine(mathStuff.addStuff(firstNumber, secondNumber));
-
-public class MathStuff
+﻿
+public class Player
 {
-    public MathStuff(short number, short numberAgain) {
-        shortOne = number;
-        shortTwo = numberAgain;
+
+}
+
+
+public class Board
+{
+    private string[] spaces;
+    public void Display()
+    {
+
     }
 
-    private short shortOne {  get; set; }
-    private short shortTwo { get; set; }
-
-    public int addStuff()
+    public bool isValidPlacement() //location parameter
     {
-        return shortOne + shortTwo;
+        //check if invalid
+
+        return true;
     }
 
-    public int addStuff(int number, int alsoNumber)
+    public bool PlaceMark() //parameters including mark and player
     {
-        return number + alsoNumber;
+        //check for validation
+        //update board spaces attribute
+
+        return true;
     }
-    public int addStuff(string firstNumber, string secondNumber)
+
+    public void ClearBoard()
     {
-        return int.Parse(firstNumber) + int.Parse(secondNumber);
+
     }
 }
