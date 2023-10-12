@@ -35,7 +35,7 @@ namespace TheCoolestTicTacToe
                         player1 = new Player(name, mark);
                         name = getValidString("Enter Player 2 name:");
                         player2 = new Player(name, (mark == 'X' ? 'O' : 'X'));
-
+                        tryToPlace();
                         currentPlayer = (player1.mark == 'X' ? 1 : 2);
                         state = GState.Playing;
                         break;
@@ -43,18 +43,7 @@ namespace TheCoolestTicTacToe
                         board.Display();
                         string currentName = (currentPlayer == 1 ? player1.name : player2.name);
                         Console.WriteLine(currentName + " it is your turn.");
-                        while (true)
-                        {
-                            Console.WriteLine("Enter a row");
-                            int row = getValidInt(1, 3);
-                            Console.WriteLine("Enter a column");
-                            int column = getValidInt(1, 3);
-                            mark = (currentPlayer == 1 ? player1.mark : player2.mark);
-                            bool success = board.PlaceMark(mark, row - 1, column - 1);
-                            if (success) break;
-                            Console.WriteLine("Invalid Placement. Try again");
-                            board.Display();
-                        }
+                        
                         over = board.checkForWin();
                         if (over)
                         {
@@ -76,6 +65,22 @@ namespace TheCoolestTicTacToe
                         running = false;
                         break;
                 }
+            }
+        }
+
+        private void tryToPlace()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter a row");
+                int row = getValidInt(1, 3);
+                Console.WriteLine("Enter a column");
+                int column = getValidInt(1, 3);
+                char mark = (currentPlayer == 1 ? player1.mark : player2.mark);
+                bool success = board.PlaceMark(mark, row - 1, column - 1);
+                if (success) break;
+                Console.WriteLine("Invalid Placement. Try again");
+                board.Display();
             }
         }
 
