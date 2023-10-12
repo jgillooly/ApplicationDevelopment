@@ -23,49 +23,68 @@ namespace TheCoolestTicTacToe
         private Board board;
         public void Run()
         {
-            while (running)
+            bool playAgain = true;
+            while (playAgain)
             {
-                switch (state)
+                while (running)
                 {
-                    case GState.Start:
-                        board = new Board();
-                        board.ClearBoard();
-                        string name = getValidString("Enter Player 1 name:");
-                        char mark = chooseMark();
-                        player1 = new Player(name, mark);
-                        name = getValidString("Enter Player 2 name:");
-                        player2 = new Player(name, (mark == 'X' ? 'O' : 'X'));
+                    switch (state)
+                    {
+                        case GState.Start:
+                            board = new Board();
+                            board.ClearBoard();
+                            string name = getValidString("Enter Player 1 name:");
+                            char mark = chooseMark();
+                            player1 = new Player(name, mark);
+                            name = getValidString("Enter Player 2 name:");
+                            player2 = new Player(name, (mark == 'X' ? 'O' : 'X'));
 
-                        currentPlayer = (player1.mark == 'X' ? 1 : 2);
+                            currentPlayer = (player1.mark == 'X' ? 1 : 2);
 
-                        state = GState.Playing;
-                        break;
-                    case GState.Playing:
-                        board.Display();
-                        string currentName = (currentPlayer == 1 ? player1.name : player2.name);
-                        Console.WriteLine(currentName + " it is your turn.");
-                        tryToPlace();
-                        over = board.checkForWin();
-                        if (over)
-                        {
-                            state = GState.GameOver;
-                        }
-                        currentPlayer = (currentPlayer == 1 ? 2 : 1);
-                        break;
-                    case GState.GameOver:
-                        board.Display();
-                        if (board.winner == '0')
-                        {
-                            Console.WriteLine("Tie game");
-                        }
-                        else
-                        {
-                            string winnerStr = (player1.mark == board.winner ? player1.name : player2.name);
-                            Console.WriteLine(winnerStr + " wins!");
-                        }
-                        running = false;
-                        break;
+                            state = GState.Playing;
+                            break;
+                        case GState.Playing:
+                            board.Display();
+                            string currentName = (currentPlayer == 1 ? player1.name : player2.name);
+                            Console.WriteLine(currentName + " it is your turn.");
+                            tryToPlace();
+                            over = board.checkForWin();
+                            if (over)
+                            {
+                                state = GState.GameOver;
+                            }
+                            currentPlayer = (currentPlayer == 1 ? 2 : 1);
+                            break;
+                        case GState.GameOver:
+                            board.Display();
+                            if (board.winner == '0')
+                            {
+                                Console.WriteLine("Tie game");
+                            }
+                            else
+                            {
+                                string winnerStr = (player1.mark == board.winner ? player1.name : player2.name);
+                                Console.WriteLine(winnerStr + " wins!");
+                            }
+                            running = false;
+                            break;
+                    }
                 }
+                playAgain = askUser("Play again? (yes/no)", "yes", "no");
+            }
+        }
+
+        bool askUser(string prompt, string yestxt, string notxt)
+        {
+            while (true)
+            {
+                Console.WriteLine(prompt);
+                string? response = Console.ReadLine();
+                if (response != null && (response.ToLower() == yestxt.ToLower() || response.ToLower() == notxt.ToLower()))
+                {
+                    return (response.ToLower() == yestxt.ToLower()) ? true : false;
+                }
+                Console.WriteLine("Invalid response");
             }
         }
 
