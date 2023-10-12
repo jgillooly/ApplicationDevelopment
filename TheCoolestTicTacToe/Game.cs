@@ -35,15 +35,16 @@ namespace TheCoolestTicTacToe
                         player1 = new Player(name, mark);
                         name = getValidString("Enter Player 2 name:");
                         player2 = new Player(name, (mark == 'X' ? 'O' : 'X'));
-                        tryToPlace();
+
                         currentPlayer = (player1.mark == 'X' ? 1 : 2);
+
                         state = GState.Playing;
                         break;
                     case GState.Playing:
                         board.Display();
                         string currentName = (currentPlayer == 1 ? player1.name : player2.name);
                         Console.WriteLine(currentName + " it is your turn.");
-                        
+                        tryToPlace();
                         over = board.checkForWin();
                         if (over)
                         {
@@ -98,7 +99,10 @@ namespace TheCoolestTicTacToe
                 if (input != null)
                 {
                     int output = -1;
-                    output = int.Parse(input);
+                    try
+                    {
+                        output = int.Parse(input);
+                    } catch (Exception) { }
                     if (output != -1)
                     {
                         if (between(output, min, max)) return output;
