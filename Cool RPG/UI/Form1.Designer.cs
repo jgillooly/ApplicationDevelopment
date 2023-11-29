@@ -49,6 +49,7 @@
             PointsLabel = new Label();
             PointsDisplay = new Label();
             button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -245,15 +246,26 @@
             button1.Name = "button1";
             button1.Size = new Size(131, 40);
             button1.TabIndex = 20;
-            button1.Text = "button1";
+            button1.Text = "Begin";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(24, 32);
+            button2.Name = "button2";
+            button2.Size = new Size(131, 40);
+            button2.TabIndex = 21;
+            button2.Text = "Quit";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(PointsDisplay);
             Controls.Add(PointsLabel);
@@ -310,5 +322,6 @@
         private Label PointsLabel;
         private Label PointsDisplay;
         private Button button1;
+        private Button button2;
     }
 }

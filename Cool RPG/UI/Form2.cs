@@ -20,20 +20,25 @@ namespace Cool_RPG
 
             Dialogue dialogueTree = new Dialogue();
 
-            Response romanceStart = new Response();
-            romanceStart.responseText = "I didn't know you cared so";
+            Response quit = new Response();
+            quit.responseText = "quit";
+
+            Response diplomacyEnding = new Response();
+            diplomacyEnding.responseText = "Your kindness has won over the enemy \nand you are at peace";
+            diplomacyEnding.dialogueOptions.Add("Quit", quit);
+            diplomacyEnding.dialogueOptions.Add("Also Quit", quit);
 
             Response attack = new Response();
             attack.responseText = "Attack";
 
             Response violenceStart = new Response();
-            violenceStart.responseText = "Violence";
-            violenceStart.dialogueOptions.Add("I'm Sorry", romanceStart);
+            violenceStart.responseText = "Your enemy responds with violence";
+            violenceStart.dialogueOptions.Add("I'm Sorry", diplomacyEnding);
             violenceStart.dialogueOptions.Add("Attack", attack);
 
             Response startOfDialogue = new Response();
-            startOfDialogue.responseText = "General Kenobi";
-            startOfDialogue.dialogueOptions.Add("How've you been", romanceStart);
+            startOfDialogue.responseText = "Your enemy stands before you";
+            startOfDialogue.dialogueOptions.Add("How're you", diplomacyEnding);
             startOfDialogue.dialogueOptions.Add("Sarcasm", violenceStart);
             dialogueTree.initialResponse = startOfDialogue;
 
@@ -63,8 +68,11 @@ namespace Cool_RPG
             {
                 if (response.responseText == "Attack")
                 {
-                    Form3 form = new Form3();
-                    form.Show();
+                    Program.game.gamestate = Gamelogic.Game.State.Combat;
+                    this.Close();
+                }
+                else if(response.responseText == "quit") {
+                    Program.game.running = false;
                     this.Close();
                 }
                 else

@@ -35,11 +35,16 @@
             progressBar2 = new ProgressBar();
             PlayerHealthLabel = new Label();
             EnemyHealthLabel = new Label();
+            outcome = new Label();
+            diplomacyButton = new Button();
+            winPicture = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)EnemyPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)winPicture).BeginInit();
             SuspendLayout();
             // 
             // EnemyPicture
             // 
+            EnemyPicture.Image = Properties.Resources.badguy;
             EnemyPicture.Location = new Point(226, 95);
             EnemyPicture.Name = "EnemyPicture";
             EnemyPicture.Size = new Size(100, 100);
@@ -64,12 +69,14 @@
             DefendButton.TabIndex = 2;
             DefendButton.Text = "Defend";
             DefendButton.UseVisualStyleBackColor = true;
+            DefendButton.Click += DefendButton_Click;
             // 
             // progressBar1
             // 
             progressBar1.Location = new Point(545, 95);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(175, 40);
+            progressBar1.Step = 1;
             progressBar1.TabIndex = 3;
             progressBar1.Value = 75;
             // 
@@ -99,11 +106,42 @@
             EnemyHealthLabel.TabIndex = 6;
             EnemyHealthLabel.Text = "Enemy Health";
             // 
+            // outcome
+            // 
+            outcome.AutoSize = true;
+            outcome.Location = new Point(62, 251);
+            outcome.Name = "outcome";
+            outcome.Size = new Size(24, 30);
+            outcome.TabIndex = 7;
+            outcome.Text = ":)";
+            // 
+            // diplomacyButton
+            // 
+            diplomacyButton.Location = new Point(305, 376);
+            diplomacyButton.Name = "diplomacyButton";
+            diplomacyButton.Size = new Size(131, 40);
+            diplomacyButton.TabIndex = 8;
+            diplomacyButton.Text = "Diplomacy";
+            diplomacyButton.UseVisualStyleBackColor = true;
+            diplomacyButton.Click += diplomacyButton_Click;
+            // 
+            // winPicture
+            // 
+            winPicture.Location = new Point(620, 294);
+            winPicture.Name = "winPicture";
+            winPicture.Size = new Size(100, 100);
+            winPicture.TabIndex = 9;
+            winPicture.TabStop = false;
+            winPicture.Click += pictureBox1_Click;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(winPicture);
+            Controls.Add(diplomacyButton);
+            Controls.Add(outcome);
             Controls.Add(EnemyHealthLabel);
             Controls.Add(PlayerHealthLabel);
             Controls.Add(progressBar2);
@@ -114,6 +152,7 @@
             Name = "Form3";
             Text = "Form3";
             ((System.ComponentModel.ISupportInitialize)EnemyPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)winPicture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -127,5 +166,8 @@
         private ProgressBar progressBar2;
         private Label PlayerHealthLabel;
         private Label EnemyHealthLabel;
+        private Label outcome;
+        private Button diplomacyButton;
+        private PictureBox winPicture;
     }
 }

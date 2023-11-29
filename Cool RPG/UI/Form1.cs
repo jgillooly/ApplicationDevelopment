@@ -1,3 +1,5 @@
+using Cool_RPG.UI;
+
 namespace Cool_RPG
 {
     public partial class Form1 : Form
@@ -97,8 +99,14 @@ namespace Cool_RPG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
-            form.Show();
+            Program.game.player = new Gamelogic.Character(character);
+            Program.game.gamestate = Gamelogic.Game.State.Dialogue;
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.game.running = false;
             this.Close();
         }
     }

@@ -37,11 +37,11 @@
             // 
             LabelDialogue.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LabelDialogue.AutoSize = true;
-            LabelDialogue.Location = new Point(386, 162);
+            LabelDialogue.Location = new Point(217, 151);
             LabelDialogue.Name = "LabelDialogue";
-            LabelDialogue.Size = new Size(51, 30);
+            LabelDialogue.Size = new Size(151, 30);
             LabelDialogue.TabIndex = 0;
-            LabelDialogue.Text = "N/A";
+            LabelDialogue.Text = "This is test text";
             LabelDialogue.TextAlign = ContentAlignment.MiddleCenter;
             LabelDialogue.Click += label1_Click;
             // 

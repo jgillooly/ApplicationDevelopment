@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cool_RPG
+namespace Cool_RPG.UI
 {
     internal class Character : INotifyPropertyChanged
     {
@@ -22,7 +22,7 @@ namespace Cool_RPG
         public int wisdom { get; set; }
         public int charisma { get; set; }
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
             {
@@ -35,11 +35,11 @@ namespace Cool_RPG
         {
             get
             {
-                return this.strength;
+                return strength;
             }
             set
             {
-                this.strength = value + baseStat;
+                strength = value + baseStat;
                 NotifyPropertyChanged();
             }
         }
@@ -48,11 +48,11 @@ namespace Cool_RPG
         {
             get
             {
-                return this.dexterity;
+                return dexterity;
             }
             set
             {
-                this.dexterity = value + baseStat;
+                dexterity = value + baseStat;
                 NotifyPropertyChanged();
             }
         }
@@ -61,11 +61,11 @@ namespace Cool_RPG
         {
             get
             {
-                return this.constitution;
+                return constitution;
             }
             set
             {
-                this.constitution = value + baseStat;
+                constitution = value + baseStat;
                 NotifyPropertyChanged();
             }
         }
@@ -74,11 +74,11 @@ namespace Cool_RPG
         {
             get
             {
-                return this.intelligence;
+                return intelligence;
             }
             set
             {
-                this.intelligence = value + baseStat;
+                intelligence = value + baseStat;
                 NotifyPropertyChanged();
             }
         }
@@ -87,11 +87,11 @@ namespace Cool_RPG
         {
             get
             {
-                return this.wisdom;
+                return wisdom;
             }
             set
             {
-                this.wisdom = value + baseStat;
+                wisdom = value + baseStat;
                 NotifyPropertyChanged();
             }
         }
@@ -100,11 +100,11 @@ namespace Cool_RPG
         {
             get
             {
-                return this.charisma;
+                return charisma;
             }
             set
             {
-                this.charisma = value + baseStat;
+                charisma = value + baseStat;
                 NotifyPropertyChanged();
             }
         }
